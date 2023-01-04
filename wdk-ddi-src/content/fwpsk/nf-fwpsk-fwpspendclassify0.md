@@ -47,8 +47,8 @@ api_name:
 ## -description
 
 A callout's 
-  <a href="/windows-hardware/drivers/ddi/_netvista/">classifyFn</a> function calls 
-  <b>FwpsPendClassify0</b> to pend the current classify request. After the request is pended, the callout driver must complete
+  <a href="/windows-hardware/drivers/ddi/fwpsk/nc-fwpsk-fwps_callout_classify_fn2"><b>classifyFn</b></a> function calls 
+  <b>FwpsPendClassify0</b> to pend the current redirection request. After the request is pended, the callout driver must complete
   the processing of the classify request asynchronously by calling 
   <a href="/windows-hardware/drivers/ddi/fwpsk/nf-fwpsk-fwpscompleteclassify0">FwpsCompleteClassify0</a>.
 <div class="alert"><b>Note</b>  <b>FwpsPendClassify0</b> is a specific version of <b>FwpsPendClassify</b>. See <a href="/windows/desktop/FWP/wfp-version-independent-names-and-targeting-specific-versions-of-windows">WFP Version-Independent Names and Targeting Specific Versions of Windows</a> for more information.</div><div> </div>
@@ -137,9 +137,17 @@ An error occurred.
 
 ## -remarks
 
+<b>FwpsPendClassify0</b> is only supported for the following layers:
+<ul>
+ <li>FWPM_LAYER_ALE_BIND_REDIRECT_V4 (FWPS_LAYER_ALE_BIND_REDIRECT_V4)</li>
+ <li>FWPM_LAYER_ALE_BIND_REDIRECT_V6 (FWPS_LAYER_ALE_BIND_REDIRECT_V6)</li>
+ <li>FWPM_LAYER_ALE_CONNECT_REDIRECT_V4 (FWPS_LAYER_ALE_CONNECT_REDIRECT_V4)</li>
+ <li>FWPM_LAYER_ALE_CONNECT_REDIRECT_V6 (FWPS_LAYER_ALE_CONNECT_REDIRECT_V6)</li>
+</ul>
+
 <b>FwpsPendClassify0</b> puts the classification of the indicated event in a pended state. A callout
     driver typically pends classification so that more processing can be done outside the scope of the 
-    <a href="/windows-hardware/drivers/ddi/_netvista/">classifyFn</a> callout function. The callout driver can
+    <b>classifyFn</b> callout function. The callout driver can
     then pass the classification handle and any other pertinent data about the indication to a function with
     less impact on performance than the driver callout functions. When processing is complete, the callout
     must call 
