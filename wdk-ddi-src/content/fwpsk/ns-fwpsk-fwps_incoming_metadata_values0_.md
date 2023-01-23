@@ -50,7 +50,7 @@ api_name:
 
 The <b>FWPS_INCOMING_METADATA_VALUES0</b> structure defines metadata values that the filter engine passes to
   a callout's 
-  <a href="/windows-hardware/drivers/ddi/_netvista/">classifyFn</a> callout function.
+  <a href="/windows-hardware/drivers/ddi/fwpsk/nc-fwpsk-fwps_callout_classify_fn2">classifyFn</a> callout function.
 <div class="alert"><b>Note</b>  <b>FWPS_INCOMING_METADATA_VALUES0</b> is a specific version of <b>FWPS_INCOMING_METADATA_VALUES</b>. See <a href="/windows/desktop/FWP/wfp-version-independent-names-and-targeting-specific-versions-of-windows">WFP Version-Independent Names and Targeting Specific Versions of Windows</a> for more information.</div><div> </div>
 
 ## -struct-fields
@@ -208,7 +208,8 @@ The path maximum transmission unit (path MTU) for an outbound packet. This value
 
 ### -field completionHandle
 
-A completion handle that is required to pend the current filtering operation. This member contains
+A completion handle that is required to pend the current filtering operation using
+[FwpsPendOperation](/windows-hardware/drivers/ddi/fwpsk/nf-fwpsk-fwpspendoperation0). This member contains
      valid data only if the FWPS_METADATA_FIELD_COMPLETION_HANDLE flag is set in the 
      <b>currentMetadataValues</b> member.
 
